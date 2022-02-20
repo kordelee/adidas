@@ -24,3 +24,7 @@ hs_err_pid*
 
 # custom
 .settings/
+.classpath
+.project
+.springBeans
+MANIFEST.MF
