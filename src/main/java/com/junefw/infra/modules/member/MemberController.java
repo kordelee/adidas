@@ -1,9 +1,13 @@
 package com.junefw.infra.modules.member;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,40 +22,54 @@ public class MemberController extends BaseController{
 	@Autowired
 	MemberServiceImpl service;
 	
-	
 	@RequestMapping(value = "memberList")
-	public ModelAndView memberList(MemberVo vo) throws Exception {
-		ModelAndView mav = new ModelAndView();
-	
+	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		
 		vo.setParamsPaging(service.selectOneCount(vo));
 		
 		if (vo.getTotalRows() > 0) {
 			List<?> list = service.selectList(vo);
-			mav.addObject("list", list);
+			model.addAttribute("list", list);
 		}
-		mav.addObject("vo", vo);
-		mav.setViewName("/xdmin/member/memberList");
-		return mav;
-	} 
+		model.addAttribute("vo", vo);
+	
+		return "xdmin/member/memberList";
+	}
 	
 	
-	@RequestMapping(value = "memberForm")
-	public ModelAndView memberForm(MemberVo vo, Member member) throws Exception {
+//	@RequestMapping(value = "memberList")
+//	public ModelAndView memberList(MemberVo vo) throws Exception {
+//		ModelAndView mav = new ModelAndView();
+//	
+//		vo.setParamsPaging(service.selectOneCount(vo));
+//		
+//		if (vo.getTotalRows() > 0) {
+//			List<?> list = service.selectList(vo);
+//			mav.addObject("list", list);
+//		}
+//		mav.addObject("vo", vo);
+//		mav.setViewName("/xdmin/member/memberList");
+//		return mav;
+//	} 
+	
+	
+	@RequestMapping(value = "memberForm", method = RequestMethod.POST)
+	public ModelAndView memberForm(@ModelAttribute MemberVo vo) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		
 		System.out.println("vo.getIfmmSeq(): " + vo.getIfmmSeq());
-		System.out.println("member.getIfmmSeq(): " + member.getIfmmSeq());
+//		System.out.println("member.getIfmmSeq(): " + member.getIfmmSeq());
 		if (vo.getIfmmSeq().equals("0")) {
 //			insert
 			System.out.println("insert");
 		} else {
 			System.out.println("update");
-			Member rt = service.selectOne(vo);
-			System.out.println("rt.getIfmmId(): " + rt.getIfmmId());
-			mav.addObject("rt", rt);
+//			Member rt = service.selectOne(vo);
+//			System.out.println("rt.getIfmmId(): " + rt.getIfmmId());
+//			mav.addObject("rt", rt);
 		}
 		
-		mav.addObject("vo", vo);
+//		mav.addObject("vo", vo);
 		mav.setViewName("/xdmin/member/memberForm");
 		return mav;
 	}

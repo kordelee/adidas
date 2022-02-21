@@ -91,10 +91,10 @@
 		<div class="col-sm-10">
 
 <!-- main s -->
-<form name="formList" id="formList" method="post" enctype="multipart/form-data">
+<form name="formList" id="formList" method="get" enctype="multipart/form-data">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
-	<input type="hidden" name="ifmmSeq">		<!-- #-> -->
+	<input type="hidden" name="ifmmSeq" value="1">		<!-- #-> -->
 
 <h3 class="mt-3 mb-0">Code</h3> 
 
@@ -147,6 +147,7 @@
         <div class="col">
 			<button type="button" class="btn btn-warning btn-sm" name="" id="btnSearch"><i class="fas fa-search"></i></button>
 			<button type="button" class="btn btn-danger btn-sm" name="" id="btnReset"><i class="fas fa-redo-alt"></i></button>
+			<input type="submit" value="submit">
         </div>    
     </div>
 </div>
@@ -263,7 +264,7 @@
 	
 	$("#btnSearch").on("click", function(){
 		if (validationList() == false) return false;
-		$("input:hidden[name=thisPage]").val(1);
+		/* $("input:hidden[name=thisPage]").val(1); */
 		$("#formList").attr("action", goUrlList).submit();
 	});
     
@@ -286,7 +287,10 @@
 	
 	goForm = function(key) {
     	/* if(key != 0) seq.val(btoa(key)); */
-    	seq.val(key);
+    	alert(key);
+    	/* seq.val(key); */
+    	/* $("input:hidden[name=ifmmSeq]").val(key); */
+    	$("#formList").attr("method", "post");
 		$("#formList").attr("action", goUrlForm).submit();
 	}
 	
