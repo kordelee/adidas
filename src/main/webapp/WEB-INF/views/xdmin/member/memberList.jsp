@@ -91,10 +91,11 @@
 		<div class="col-sm-10">
 
 <!-- main s -->
-<form name="formList" id="formList" method="get" enctype="multipart/form-data">
+<form name="formList" id="formList" method="post">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 	<input type="hidden" name="ifmmSeq" value="1">		<!-- #-> -->
+	<input type="hidden" name="aaa" value="1">		<!-- #-> -->
 
 <h3 class="mt-3 mb-0">Code</h3> 
 
@@ -287,10 +288,10 @@
 	
 	goForm = function(key) {
     	/* if(key != 0) seq.val(btoa(key)); */
-    	alert(key);
+/*     	alert(key); */
     	/* seq.val(key); */
-    	/* $("input:hidden[name=ifmmSeq]").val(key); */
-    	$("#formList").attr("method", "post");
+		$("input:hidden[name=ifmmSeq]").val(key);
+/*     	$("#formList").attr("method", "post"); */
 		$("#formList").attr("action", goUrlForm).submit();
 	}
 	

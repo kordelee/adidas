@@ -36,9 +36,21 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/starterXdmin")
-	public String starter() {
-		return "/xdmin/_starter/starter";
+	@RequestMapping(value = "/list")
+	public String list() {
+		return "/xdmin/_starter/list";
 	}
+	
+	
+	@RequestMapping(value = "/form")
+	public String form() {
+		return "/xdmin/_starter/form";
+	}
+	
+	@RequestMapping(value = "/proc")
+	public String proc() {
+		return "/xdmin/_starter/proc";
+	}
+	
 	
 }

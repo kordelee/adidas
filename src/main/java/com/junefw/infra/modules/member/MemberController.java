@@ -24,18 +24,59 @@ public class MemberController extends BaseController{
 	
 	@RequestMapping(value = "memberList")
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-		
+
 		vo.setParamsPaging(service.selectOneCount(vo));
 		
 		if (vo.getTotalRows() > 0) {
 			List<?> list = service.selectList(vo);
 			model.addAttribute("list", list);
 		}
-		model.addAttribute("vo", vo);
 	
 		return "xdmin/member/memberList";
 	}
 	
+	
+	@RequestMapping(value = "memberForm")
+	public String memberForm(@ModelAttribute("vo") MemberVo vo, Member member, Model model) throws Exception {
+		
+		System.out.println("vo.getIfmmSeq(): " + vo.getIfmmSeq());
+		System.out.println("vo.getRowNumToShow(): " + vo.getRowNumToShow());
+		System.out.println("member.getIfmmSeq(): " + member.getIfmmSeq());
+		
+		
+		
+		if (vo.getIfmmSeq().equals("0")) {
+//			insert
+			System.out.println("insert");
+		} else {
+			System.out.println("update");
+			Member rt = service.selectOne(vo);
+			model.addAttribute("rt", rt);
+		}
+	
+		return "xdmin/member/memberForm";
+	}
+	
+//	@RequestMapping(value = "memberForm", method = RequestMethod.POST)
+//	public ModelAndView memberForm(@ModelAttribute MemberVo vo) throws Exception {
+//		ModelAndView mav = new ModelAndView();
+//		
+//		System.out.println("vo.getIfmmSeq(): " + vo.getIfmmSeq());
+////		System.out.println("member.getIfmmSeq(): " + member.getIfmmSeq());
+//		if (vo.getIfmmSeq().equals("0")) {
+////			insert
+//			System.out.println("insert");
+//		} else {
+//			System.out.println("update");
+////			Member rt = service.selectOne(vo);
+////			System.out.println("rt.getIfmmId(): " + rt.getIfmmId());
+////			mav.addObject("rt", rt);
+//		}
+		
+////		mav.addObject("vo", vo);
+//		mav.setViewName("/xdmin/member/memberForm");
+//		return mav;
+//	}
 	
 //	@RequestMapping(value = "memberList")
 //	public ModelAndView memberList(MemberVo vo) throws Exception {
@@ -51,28 +92,6 @@ public class MemberController extends BaseController{
 //		mav.setViewName("/xdmin/member/memberList");
 //		return mav;
 //	} 
-	
-	
-	@RequestMapping(value = "memberForm", method = RequestMethod.POST)
-	public ModelAndView memberForm(@ModelAttribute MemberVo vo) throws Exception {
-		ModelAndView mav = new ModelAndView();
-		
-		System.out.println("vo.getIfmmSeq(): " + vo.getIfmmSeq());
-//		System.out.println("member.getIfmmSeq(): " + member.getIfmmSeq());
-		if (vo.getIfmmSeq().equals("0")) {
-//			insert
-			System.out.println("insert");
-		} else {
-			System.out.println("update");
-//			Member rt = service.selectOne(vo);
-//			System.out.println("rt.getIfmmId(): " + rt.getIfmmId());
-//			mav.addObject("rt", rt);
-		}
-		
-//		mav.addObject("vo", vo);
-		mav.setViewName("/xdmin/member/memberForm");
-		return mav;
-	}
 	
 	
 //	@RequestMapping(value = "memberUpdt")
