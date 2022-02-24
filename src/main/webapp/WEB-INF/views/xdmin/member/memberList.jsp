@@ -91,12 +91,10 @@
 		<div class="col-sm-10">
 
 <!-- main s -->
-<!-- <form name="formList" id="formList" method="post" enctype="multipart/form-data"> -->
 <form name="formList" id="formList" method="post">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
-	<input type="hidden" name="ifmmSeq">		<!-- #-> -->
-
+	<input type="hidden" name="ifmmSeq">	<!-- #-> -->
 <h3 class="mt-3 mb-0">Code</h3> 
 
 <!--  -->
@@ -114,36 +112,36 @@
 <div id="divSearch" class="container-fluid border px-0 mt-2 py-2 py-sm-3">
     <div class="row row-cols-2 row-cols-sm-6 g-2 px-2">
         <div class="col">
-            <select class="form-select form-select-sm" name="sel1" id="sel1">
-                <option>삭제여부</option>
-                <option>Y</option>
-                <option>N</option>
+            <select class="form-select form-select-sm" name="shDelNy" id="shDelNy">
+                <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
+                <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>Y</option>
+                <option value="0" <c:if test="${vo.shDelNy eq 0}">selected</c:if>>N</option>
             </select>
         </div>
         <div class="col">
-            <select class="form-select form-select-sm" name="" id="sel1">
-                <option>날짜</option>
-                <option>등록일</option>
-                <option>수정일</option>
+            <select class="form-select form-select-sm" name="shDateOption" id="shDateOption">
+                <option value="" <c:if test="${empty vo.shDateOption}">selected</c:if>>날짜</option>
+                <option value="1" <c:if test="${vo.shDateOption eq 1}">selected</c:if>>등록일</option>
+                <option value="2" <c:if test="${vo.shDateOption eq 2}">selected</c:if>>수정일</option>
             </select>
         </div>  
         <div class="col">
-            <input class="form-control form-control-sm" type="text" placeholder="시작일" name="" id="" value="">
+            <input class="form-control form-control-sm" type="text" placeholder="시작일" name="shDateStart" id="shDateStart" value="">
         </div>              
         <div class="col">
-            <input class="form-control form-control-sm" type="text" placeholder="종료일" name="" id="" value="">
+            <input class="form-control form-control-sm" type="text" placeholder="종료일" name="shDateEnd" id="shDateEnd" value="">
         </div> 
     </div>
     <div class="row row-cols-2 row-cols-sm-6 g-2 mt-1 px-2">
         <div class="col">
-            <select class="form-select form-select-sm" name="searchOption" id="searchOption">
-                <option>검색구분</option>
-                <option>제목</option>
-                <option>내용</option>
+            <select class="form-select form-select-sm" name="shOption" id="shOption">
+                <option value="" <c:if test="${empty vo.shDateOption}">selected</c:if>>검색구분</option>
+                <option value="1" <c:if test="${vo.shDateOption eq 1}">selected</c:if>>제목</option>
+                <option value="2" <c:if test="${vo.shDateOption eq 2}">selected</c:if>>내용</option>
             </select>
         </div>                    
         <div class="col">
-            <input class="form-control form-control-sm" type="text" placeholder="검색어" name="searchValue" id="searchValue" value="">
+            <input class="form-control form-control-sm" type="text" placeholder="검색어" name="shValue" id="shValue" value="<c:out value="${vo.shValue }"/>">
         </div> 
         <div class="col">
 			<button type="button" class="btn btn-warning btn-sm" name="" id="btnSearch"><i class="fas fa-search"></i></button>
@@ -267,6 +265,7 @@
 	$("#btnSearch").on("click", function(){
 		if (validationList() == false) return false;
 		/* $("input:hidden[name=thisPage]").val(1); */
+		alert($("#shValue").val());
 		form.attr("action", goUrlList).submit();
 	});
     

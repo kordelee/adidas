@@ -94,7 +94,9 @@
 <!-- main s -->
 <!-- <form name="form" id="form" method="post" enctype="multipart/form-data"> -->
 <form name="form" id="form" method="post">
-	<input type="hidden" name="ifmmSeq" value="${vo.ifmmSeq}">		<!-- #-> -->
+<!-- *Vo.jsp s -->
+<%@include file="memberVo.jsp"%>
+<!-- *Vo.jsp e -->
 
 <h3 class="mt-3 mb-0">Code</h3>
  
@@ -290,7 +292,9 @@
 
 </form>
 <form name="formVo" id="formVo" method="post">
-	<c:import url="memberVo.jsp"></c:import>
+<!-- *Vo.jsp s -->
+<%@include file="memberVo.jsp"%>
+<!-- *Vo.jsp e -->
 </form>
 <!-- main e -->
 

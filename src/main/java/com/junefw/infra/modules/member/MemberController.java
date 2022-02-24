@@ -48,9 +48,9 @@ public class MemberController extends BaseController{
 	}
 	
 	@RequestMapping(value = "memberUpdt")
-	public String memberUpdt(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+	public String memberUpdt(MemberVo vo, Member member, RedirectAttributes redirectAttributes) throws Exception {
 		
-		int re = service.update(vo);
+		int re = service.update(member);
 		
 		System.out.println("re" + re);
 

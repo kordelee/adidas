@@ -3,15 +3,21 @@
 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 
+<input type="hidden" name="shDelNy" value="<c:out value="${vo.shDelNy}"/>"/>
+<input type="hidden" name="shDateOption" value="<c:out value="${vo.shDateOption}"/>"/>
+<%-- 
+<input type="hidden" name="shStartDate" value="<c:out value="${vo.shStartDate}"/>"/>
+<input type="hidden" name="shEndDate" value="<c:out value="${vo.shEndDate}"/>"/>
+ --%>
 <input type="hidden" name="shOption" value="<c:out value="${vo.shOption}"/>"/>
 <input type="hidden" name="shValue" value="<c:out value="${vo.shValue}"/>"/>
 
-	private String shOption = "";
-	private String ShValue = "";
-	private Integer shDelNy = 0;
-	private Integer shDateOption = 0;
-	private Date shStartDate;
-	private Date shEndDate;
+<input type="hidden" name="ifmmSeq"value="<c:out value="${vo.ifmmSeq}"/>" />	<!-- #-> -->
+
+
+
+
+
 
 
 

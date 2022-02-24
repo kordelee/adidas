@@ -6,14 +6,6 @@ import com.junefw.infra.common.constants.Constants;
 
 public class BaseVo {
 
-//	search
-	private String shOption = "";
-	private String ShValue = "";
-	private Integer shDelNy = 0;
-	private Integer shDateOption = 0;
-	private Date shStartDate;
-	private Date shEndDate;
-	
 //	paging
 	private int thisPage = 1;								// 현재 페이지
 	private int rowNumToShow = Constants.RowNumToShow;		// 화면에 보여줄 데이터 줄 갯수
@@ -29,6 +21,14 @@ public class BaseVo {
 	private Integer RNUM;
 
 	private int startRnumForMysql = 0;						// 쿼리 시작 row
+	
+//	search
+	private Integer shDelNy;
+	private Integer shDateOption;
+//	private Date shStartDate;
+//	private Date shEndDate;
+	private String shOption = "";
+	private String ShValue = "";
 //	----------
 
 public void setParamsPaging(int totalRows) {
@@ -76,141 +76,141 @@ public void setParamsPaging(int totalRows) {
 //		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
 		
 	}
-	
-	public String getShOption() {
-		return shOption;
-	}
-
-	public void setShOption(String shOption) {
-		this.shOption = shOption;
-	}
-
-	public String getShValue() {
-		return ShValue;
-	}
-
-	public void setShValue(String shValue) {
-		ShValue = shValue;
-	}
-
-	public Integer getShDelNy() {
-		return shDelNy;
-	}
-
-	public void setShDelNy(Integer shDelNy) {
-		this.shDelNy = shDelNy;
-	}
-
-	public Integer getShDateOption() {
-		return shDateOption;
-	}
-
-	public void setShDateOption(Integer shDateOption) {
-		this.shDateOption = shDateOption;
-	}
-
-	public Date getShStartDate() {
-		return shStartDate;
-	}
-
-	public void setShStartDate(Date shStartDate) {
-		this.shStartDate = shStartDate;
-	}
-
-	public Date getShEndDate() {
-		return shEndDate;
-	}
-
-	public void setShEndDate(Date shEndDate) {
-		this.shEndDate = shEndDate;
-	}
 
 	public int getThisPage() {
 		return thisPage;
 	}
-
+	
 	public void setThisPage(int thisPage) {
 		this.thisPage = thisPage;
 	}
-
+	
 	public int getRowNumToShow() {
 		return rowNumToShow;
 	}
-
+	
 	public void setRowNumToShow(int rowNumToShow) {
 		this.rowNumToShow = rowNumToShow;
 	}
-
+	
 	public int getPageNumToShow() {
 		return pageNumToShow;
 	}
-
+	
 	public void setPageNumToShow(int pageNumToShow) {
 		this.pageNumToShow = pageNumToShow;
 	}
-
+	
 	public int getTotalRows() {
 		return totalRows;
 	}
-
+	
 	public void setTotalRows(int totalRows) {
 		this.totalRows = totalRows;
 	}
-
+	
 	public int getTotalPages() {
 		return totalPages;
 	}
-
+	
 	public void setTotalPages(int totalPages) {
 		this.totalPages = totalPages;
 	}
-
+	
 	public int getStartPage() {
 		return startPage;
 	}
-
+	
 	public void setStartPage(int startPage) {
 		this.startPage = startPage;
 	}
-
+	
 	public int getEndPage() {
 		return endPage;
 	}
-
+	
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
-
+	
 	public int getStartRnumForOracle() {
 		return startRnumForOracle;
 	}
-
+	
 	public void setStartRnumForOracle(int startRnumForOracle) {
 		this.startRnumForOracle = startRnumForOracle;
 	}
-
+	
 	public int getEndRnumForOracle() {
 		return endRnumForOracle;
 	}
-
+	
 	public void setEndRnumForOracle(int endRnumForOracle) {
 		this.endRnumForOracle = endRnumForOracle;
 	}
-
+	
 	public Integer getRNUM() {
 		return RNUM;
 	}
-
+	
 	public void setRNUM(Integer rNUM) {
 		RNUM = rNUM;
 	}
-
+	
 	public int getStartRnumForMysql() {
 		return startRnumForMysql;
 	}
-
+	
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
+	}
+	
+	public Integer getShDelNy() {
+		return shDelNy;
+	}
+	
+	public void setShDelNy(Integer shDelNy) {
+		this.shDelNy = shDelNy;
+	}
+	
+	public Integer getShDateOption() {
+		return shDateOption;
+	}
+	
+	public void setShDateOption(Integer shDateOption) {
+		this.shDateOption = shDateOption;
+	}
+	
+//	public Date getShStartDate() {
+//		return shStartDate;
+//	}
+//	
+//	public void setShStartDate(Date shStartDate) {
+//		this.shStartDate = shStartDate;
+//	}
+//	
+//	public Date getShEndDate() {
+//		return shEndDate;
+//	}
+//	
+//	public void setShEndDate(Date shEndDate) {
+//		this.shEndDate = shEndDate;
+//	}
+	
+	public String getShOption() {
+		return shOption;
+	}
+	
+	public void setShOption(String shOption) {
+		this.shOption = shOption;
+	}
+	
+	public String getShValue() {
+		return ShValue;
+	}
+	
+	public void setShValue(String shValue) {
+		ShValue = shValue;
 	}
 	
 }
