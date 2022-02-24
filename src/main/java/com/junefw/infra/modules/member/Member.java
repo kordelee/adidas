@@ -6,27 +6,27 @@ import com.junefw.infra.common.base.Base;
 
 public class Member extends Base {
 	
-	String ifmmSeq = "";
-	Integer ifmmAdminNy = 0;
-	Integer ifmmDormancyNy = 0;
-	String ifmmName = "";
-	String ifmmId = "";
-	String ifmmPassword = "";
-	Date ifmmPwdModDate ;
-	String ifmmNickname = "";
-	Integer ifmmGenderCd = 0;
-	Date ifmmDob;
-	Integer ifmmSavedCd = 0;
-	Integer ifmmMarriageCd = 0;
-	Date ifmmMarriageDate;
-	Integer ifmmChildrenNum = 0;
-	String ifmmFavoriteColor = "";
-	String ifmmRecommenderSeq = "";
-	Integer ifmmEmailConsentNy = 0;
-	Integer ifmmSmsConsentNy = 0;
-	Integer ifmmPushConsentNy = 0;
-	String ifmmDesc = "";
-	String ifmmDelNy = "";
+	private String ifmmSeq = "";
+	private Integer ifmmAdminNy = 0;
+	private Integer ifmmDormancyNy = 0;
+	private String ifmmName = "";
+	private String ifmmId = "";
+	private String ifmmPassword = "";
+	private Date ifmmPwdModDate ;
+	private String ifmmNickname = "";
+	private Integer ifmmGenderCd = 0;
+	private Date ifmmDob;
+	private Integer ifmmSavedCd = 0;
+	private Integer ifmmMarriageCd = 0;
+	private Date ifmmMarriageDate;
+	private Integer ifmmChildrenNum = 0;
+	private String ifmmFavoriteColor = "";
+	private String ifmmRecommenderSeq = "";
+	private Integer ifmmEmailConsentNy = 0;
+	private Integer ifmmSmsConsentNy = 0;
+	private Integer ifmmPushConsentNy = 0;
+	private String ifmmDesc = "";
+	private String ifmmDelNy = "";
 //	----------
 	public String getIfmmSeq() {
 		return ifmmSeq;

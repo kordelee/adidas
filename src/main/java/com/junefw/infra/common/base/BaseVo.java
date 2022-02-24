@@ -1,10 +1,18 @@
 package com.junefw.infra.common.base;
 
+import java.util.Date;
+
 import com.junefw.infra.common.constants.Constants;
 
 public class BaseVo {
 
 //	search
+	private String shOption = "";
+	private String ShValue = "";
+	private Integer shDelNy = 0;
+	private Integer shDateOption = 0;
+	private Date shStartDate;
+	private Date shEndDate;
 	
 //	paging
 	private int thisPage = 1;								// 현재 페이지
@@ -22,8 +30,8 @@ public class BaseVo {
 
 	private int startRnumForMysql = 0;						// 쿼리 시작 row
 //	----------
-	
-	public void setParamsPaging(int totalRows) {
+
+public void setParamsPaging(int totalRows) {
 		
 //		setThisPage(3);
 
@@ -69,6 +77,54 @@ public class BaseVo {
 		
 	}
 	
+	public String getShOption() {
+		return shOption;
+	}
+
+	public void setShOption(String shOption) {
+		this.shOption = shOption;
+	}
+
+	public String getShValue() {
+		return ShValue;
+	}
+
+	public void setShValue(String shValue) {
+		ShValue = shValue;
+	}
+
+	public Integer getShDelNy() {
+		return shDelNy;
+	}
+
+	public void setShDelNy(Integer shDelNy) {
+		this.shDelNy = shDelNy;
+	}
+
+	public Integer getShDateOption() {
+		return shDateOption;
+	}
+
+	public void setShDateOption(Integer shDateOption) {
+		this.shDateOption = shDateOption;
+	}
+
+	public Date getShStartDate() {
+		return shStartDate;
+	}
+
+	public void setShStartDate(Date shStartDate) {
+		this.shStartDate = shStartDate;
+	}
+
+	public Date getShEndDate() {
+		return shEndDate;
+	}
+
+	public void setShEndDate(Date shEndDate) {
+		this.shEndDate = shEndDate;
+	}
+
 	public int getThisPage() {
 		return thisPage;
 	}

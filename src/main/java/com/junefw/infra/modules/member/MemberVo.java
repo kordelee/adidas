@@ -9,7 +9,7 @@ public class MemberVo extends BaseVo implements Serializable{
 	private static final long serialVersionUID = 717598492426181310L;
 
 //	seq (mandotory)
-	String ifmmSeq = "";
+	private String ifmmSeq = "";
 
 	public String getIfmmSeq() {
 		return ifmmSeq;
@@ -18,11 +18,9 @@ public class MemberVo extends BaseVo implements Serializable{
 	public void setIfmmSeq(String ifmmSeq) {
 		this.ifmmSeq = ifmmSeq;
 	}
-
-
 	
 //	search item extra (optional)
-
-
+//	----------
+	
 
 }

@@ -91,8 +91,7 @@
 		<div class="col-sm-10">
 
 <!-- main s -->
-<!-- <form name="formList" id="formList" method="post" enctype="multipart/form-data"> -->
-<form name="formList" id="formList" method="post">
+<form name="formList" id="formList" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 	<input type="hidden" name="ifmmSeq">		<!-- #-> -->
@@ -261,13 +260,11 @@
 	var goUrlForm = "/member/memberForm";			/* #-> */
 	var seq = $("input:hidden[name=ifmmSeq]");		/* #-> */
 	
-	var form = $("form[name=formList]");
-	
 	
 	$("#btnSearch").on("click", function(){
 		if (validationList() == false) return false;
-		/* $("input:hidden[name=thisPage]").val(1); */
-		form.attr("action", goUrlList).submit();
+		$("input:hidden[name=thisPage]").val(1);
+		$("#formList").attr("action", goUrlList).submit();
 	});
     
 	
@@ -283,20 +280,20 @@
  		
 	$("#changeRowNum").on("change", function(){
 		$("input:hidden[name=rowNumToShow]").val($("#changeRowNum option:selected").val());
-		form.attr("action", goUrlList).submit();
+		$("#formList").attr("action", goUrlList).submit();
 	}); 
 		
 	
 	goForm = function(key) {
     	/* if(key != 0) seq.val(btoa(key)); */
-		$("input:hidden[name=ifmmSeq]").val(key);
-		form.attr("action", goUrlForm).submit();
+    	seq.val(key);
+		$("#formList").attr("action", goUrlForm).submit();
 	}
 	
 	
 	goList = function(thisPage) {
 		$("input:hidden[name=thisPage]").val(thisPage);
-		form.attr("action", goUrlList).submit();
+		$("#formList").attr("action", goUrlList).submit();
 	}
 
 	

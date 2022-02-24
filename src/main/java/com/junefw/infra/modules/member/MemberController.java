@@ -1,17 +1,13 @@
 package com.junefw.infra.modules.member;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.junefw.infra.common.base.BaseController;
 
@@ -28,7 +24,8 @@ public class MemberController extends BaseController{
 		vo.setParamsPaging(service.selectOneCount(vo));
 		
 		if (vo.getTotalRows() > 0) {
-			List<?> list = service.selectList(vo);
+			List<Member> list = service.selectList(vo);
+//			List<?> list = service.selectList(vo);
 			model.addAttribute("list", list);
 		}
 	
@@ -37,25 +34,33 @@ public class MemberController extends BaseController{
 	
 	
 	@RequestMapping(value = "memberForm")
-	public String memberForm(@ModelAttribute("vo") MemberVo vo, Member member, Model model) throws Exception {
-		
-		System.out.println("vo.getIfmmSeq(): " + vo.getIfmmSeq());
-		System.out.println("vo.getRowNumToShow(): " + vo.getRowNumToShow());
-		System.out.println("member.getIfmmSeq(): " + member.getIfmmSeq());
-		
-		
-		
+	public String memberForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+				
 		if (vo.getIfmmSeq().equals("0")) {
 //			insert
-			System.out.println("insert");
+
 		} else {
-			System.out.println("update");
 			Member rt = service.selectOne(vo);
 			model.addAttribute("rt", rt);
 		}
 	
 		return "xdmin/member/memberForm";
 	}
+	
+	@RequestMapping(value = "memberUpdt")
+	public String memberUpdt(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		
+		int re = service.update(vo);
+		
+		System.out.println("re" + re);
+
+//		model.addAttribute("vo", vo);
+//		model.addAttribute("vo", model);
+
+		redirectAttributes.addAttribute("vo", vo);
+		
+		return "redirect:/member/memberForm";
+	}		
 	
 //	@RequestMapping(value = "memberForm", method = RequestMethod.POST)
 //	public ModelAndView memberForm(@ModelAttribute MemberVo vo) throws Exception {

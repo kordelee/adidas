@@ -92,8 +92,7 @@
 		<div class="col-sm-10">
 
 <!-- main s -->
-<!-- <form name="form" id="form" method="post" enctype="multipart/form-data"> -->
-<form name="form" id="form" method="post">
+<form name="form" id="form" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="ifmmSeq" value="${vo.ifmmSeq}">		<!-- #-> -->
 
 <h3 class="mt-3 mb-0">Code</h3>
@@ -278,7 +277,7 @@
 <div class="container-fluid px-0 px-sm-5 mt-3">
     <div class="row">
         <div class="col-6 text-start">
-            <button type="button" class="btn btn-secondary btn-sm" name="" id="btnList"><i class="fa-solid fa-bars"></i></button>
+            <button type="button" class="btn btn-secondary btn-sm"><i class="fa-solid fa-bars"></i></button>
         </div>
         <div class="col-6 text-end">
             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="" id="btnDelete"><i class="far fa-trash-alt"></i></button>
@@ -288,9 +287,6 @@
     </div>
 </div>
 
-</form>
-<form name="formVo" id="formVo" method="post">
-	<c:import url="memberVo.jsp"></c:import>
 </form>
 <!-- main e -->
 
@@ -315,46 +311,40 @@
 
 var goUrlList = "/member/memberList"; 			/* #-> */
 var goUrlInst = "/member/memberInst"; 			/* #-> */
-var goUrlUpdt = "/member/memberUpdt";			/* #-> */
-var goUrlDele = "/member/memberDele";			/* #-> */
-var goUrlUele = "/member/memberUele";			/* #-> */
-
+var goUrlUpdt = "/member/memberUpdt"; 			/* #-> */
 var seq = $("input:hidden[name=ifmmSeq]");		/* #-> */
 
-var form = $("form[name=form]");
-var formVo = $("form[name=formVo]");
-
-/* var formParamsName = $("form[name='paramsForm']"); */
+var formName = $("form[name='insertForm']");
+var formParamsName = $("form[name='paramsForm']");
 
 $("#btnSave").on("click", function(){
 	if (seq.val() == "0"){
    		// 등록
    		alert("insert");
    		if (validationInst() == false) return false;
-   		form.attr("action", goUrlInst).submit();
+   		$("#form").attr("action", goUrlInst);
    	}else {
    		// 수정
    		alert("update");
    		/* keyName.val(atob(keyName.val())); */
    		if (validationUpdt() == false) return false;
-   		form.attr("action", goUrlUpdt).submit();
+   		$("#form").attr("action", goUrlUpdt);
    	}
+	$("#form").submit();
 }); 
-
 
 validationInst = function() {
    	if(validationUpdt() == false) return false;
 }
-
 
 validationUpdt = function() {
 	<!-- if(!checkNull($.trim($("input[name=MENU_NAME]").val()), "MENU_NAME")) return false;  -->
 	/* if(!checkNull($('input[name=AUTH_NM]'), $.trim($('input[name=AUTH_NM]').val()), "권한명을 등록 해주세요!")) return false; */
 }
 
-
-$("#btnList").on("click", function(){
-	formVo.attr("action", goUrlList).submit();
+$("#cancelBtn").on("click", function(){
+    formParamsName.attr("action", goUrlList);
+    formParamsName.submit();
 }); 
 
 </script>
