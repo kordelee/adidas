@@ -20,6 +20,8 @@ public class MemberDao {
 	public int selectOneCount(MemberVo vo) { return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	public List<Member> selectList(MemberVo vo){ return sqlSession.selectList(namespace + ".selectList", vo); }
 	public Member selectOne(MemberVo vo) { return sqlSession.selectOne(namespace + ".selectOne", vo); }
-	public int insert(MemberVo vo) { return sqlSession.insert(namespace + ".insert", vo); }
-	public int update(Member member) { return sqlSession.update(namespace + ".update", member); }
+	public int insert(Member dto) { return sqlSession.insert(namespace + ".insert", dto); }
+	public int update(Member dto) { return sqlSession.update(namespace + ".update", dto); }
+	public int uelete(MemberVo vo) { return sqlSession.update(namespace + ".uelete", vo); }
+	public int delete(MemberVo vo) { return sqlSession.delete(namespace + ".delete", vo); }
 }

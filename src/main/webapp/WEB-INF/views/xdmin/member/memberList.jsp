@@ -265,7 +265,6 @@
 	$("#btnSearch").on("click", function(){
 		if (validationList() == false) return false;
 		/* $("input:hidden[name=thisPage]").val(1); */
-		alert($("#shValue").val());
 		form.attr("action", goUrlList).submit();
 	});
     

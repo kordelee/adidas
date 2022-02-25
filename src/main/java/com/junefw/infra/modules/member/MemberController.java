@@ -35,11 +35,11 @@ public class MemberController extends BaseController{
 	
 	@RequestMapping(value = "memberForm")
 	public String memberForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-				
+		
 		if (vo.getIfmmSeq().equals("0")) {
 //			insert
-
 		} else {
+//			update
 			Member rt = service.selectOne(vo);
 			model.addAttribute("rt", rt);
 		}
@@ -50,17 +50,23 @@ public class MemberController extends BaseController{
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(MemberVo vo, Member member, RedirectAttributes redirectAttributes) throws Exception {
 		
-		int re = service.update(member);
+		service.update(member);
 		
-		System.out.println("re" + re);
-
-//		model.addAttribute("vo", vo);
-//		model.addAttribute("vo", model);
-
-		redirectAttributes.addAttribute("vo", vo);
+		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/member/memberForm";
-	}		
+	}
+	
+	
+	@RequestMapping(value = "memberUele")
+	public String memberUele(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.uelete(vo);
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/member/memberList";
+	}
 	
 //	@RequestMapping(value = "memberForm", method = RequestMethod.POST)
 //	public ModelAndView memberForm(@ModelAttribute MemberVo vo) throws Exception {

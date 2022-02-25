@@ -283,8 +283,9 @@
             <button type="button" class="btn btn-secondary btn-sm" name="" id="btnList"><i class="fa-solid fa-bars"></i></button>
         </div>
         <div class="col-6 text-end">
-            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="" id="btnDelete"><i class="far fa-trash-alt"></i></button>
-            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="" id="btnUelete"><i class="far fa-trash-alt"></i></button>
+            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="" id="btnModalDelete"><i class="far fa-trash-alt"></i></button>
+            <!-- <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="" id="btnUelete"><i class="far fa-trash-alt"></i></button> -->
+            <button type="button" class="btn btn-danger btn-sm" name="" id="btnModalUelete"><i class="far fa-trash-alt"></i></button>
             <button type="button" class="btn btn-success btn-sm" name="" id="btnSave"><i class="fa-regular fa-bookmark"></i></button>
         </div>
     </div>
@@ -333,12 +334,10 @@ var formVo = $("form[name=formVo]");
 $("#btnSave").on("click", function(){
 	if (seq.val() == "0"){
    		// 등록
-   		alert("insert");
    		if (validationInst() == false) return false;
    		form.attr("action", goUrlInst).submit();
    	}else {
    		// 수정
-   		alert("update");
    		/* keyName.val(atob(keyName.val())); */
    		if (validationUpdt() == false) return false;
    		form.attr("action", goUrlUpdt).submit();
@@ -360,6 +359,19 @@ validationUpdt = function() {
 $("#btnList").on("click", function(){
 	formVo.attr("action", goUrlList).submit();
 }); 
+
+
+$("#btnModalUelete, #btnModalDelete").on("click", function(){
+	$(".modal-title").text("확 인");
+	$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+	$("#modalConfirm").modal("show");
+});
+
+
+$("#btnUelete").on("click", function(){
+	$("#modalConfirm").modal("hide");
+ 	formVo.attr("action", goUrlUele).submit();
+});
 
 </script>
 

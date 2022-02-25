@@ -21,10 +21,16 @@ public class MemberServiceImpl implements MemberService{
 	public Member selectOne(MemberVo vo) throws Exception { return dao.selectOne(vo); }
 
 	@Override
-	public int insert(MemberVo vo) throws Exception { return dao.insert(vo); }
+	public int insert(Member dto) throws Exception { return dao.insert(dto); }
 
 	@Override
 	public int update(Member dto) throws Exception { return dao.update(dto); }
+	
+	@Override
+	public int uelete(MemberVo vo) throws Exception { return dao.uelete(vo); }
+	
+	@Override
+	public int delete(MemberVo vo) throws Exception { return dao.delete(vo); }
 
 
 }
