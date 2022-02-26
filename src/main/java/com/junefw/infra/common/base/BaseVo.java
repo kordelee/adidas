@@ -23,12 +23,12 @@ public class BaseVo {
 	private int startRnumForMysql = 0;							// 쿼리 시작 row
 	
 //	search
-	private Integer shDelNy;
+	private Integer shDelNy = 0;
 	private Integer shDateOption;
 	private Date shStartDate;
 	private Date shEndDate;
-	private String shOption = "";
-	private String ShValue = "";
+	private String shOption;
+	private String ShValue;
 //	----------
 
 	public void setParamsPaging(int totalRows) {

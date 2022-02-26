@@ -126,18 +126,18 @@
             </select>
         </div>  
         <div class="col">
-            <input class="form-control form-control-sm" type="text" placeholder="시작일" name="shDateStart" id="shDateStart" value="">
+            <input class="form-control form-control-sm" type="date" placeholder="시작일" name="shDateStart" id="shDateStart" value="">
         </div>              
         <div class="col">
-            <input class="form-control form-control-sm" type="text" placeholder="종료일" name="shDateEnd" id="shDateEnd" value="">
+            <input class="form-control form-control-sm" type="date" placeholder="종료일" name="shDateEnd" id="shDateEnd" value="">
         </div> 
     </div>
     <div class="row row-cols-2 row-cols-sm-6 g-2 mt-1 px-2">
         <div class="col">
             <select class="form-select form-select-sm" name="shOption" id="shOption">
                 <option value="" <c:if test="${empty vo.shDateOption}">selected</c:if>>검색구분</option>
-                <option value="1" <c:if test="${vo.shDateOption eq 1}">selected</c:if>>제목</option>
-                <option value="2" <c:if test="${vo.shDateOption eq 2}">selected</c:if>>내용</option>
+                <option value="1" <c:if test="${vo.shDateOption eq 1}">selected</c:if>>이름</option>
+                <option value="2" <c:if test="${vo.shDateOption eq 2}">selected</c:if>>아이디</option>
             </select>
         </div>                    
         <div class="col">

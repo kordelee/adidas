@@ -12,7 +12,16 @@
 		from 
 			infrMember a
 		where 1=1
-			and a.ifmmDelNy = 0
+			<if test="shDelNy != null and !shDelNy.equals('')">AND ifmmDelNy = #{shDelNy}</if>
+			<choose>
+				<when test="shDateOption == 1">and regDate like CONCAT('%',#{shValue},'%')</when>
+				<when test="shDateOption == 2">and ifmmId like CONCAT('%',#{shValue},'%')</when>
+			</choose>
+			<choose>
+				<when test="shOption == 1">and ifmmName like CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">and ifmmId like CONCAT('%',#{shValue},'%')</when>
+			</choose>
+			
 	</sql>
 	
 	<select id="selectList" resultMap="resultMapObj">
