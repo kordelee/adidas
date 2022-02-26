@@ -318,60 +318,76 @@
 
 <script>
 
-var goUrlList = "/member/memberList"; 			/* #-> */
-var goUrlInst = "/member/memberInst"; 			/* #-> */
-var goUrlUpdt = "/member/memberUpdt";			/* #-> */
-var goUrlDele = "/member/memberDele";			/* #-> */
-var goUrlUele = "/member/memberUele";			/* #-> */
+	$(document).ready(function(){
 
-var seq = $("input:hidden[name=ifmmSeq]");		/* #-> */
-
-var form = $("form[name=form]");
-var formVo = $("form[name=formVo]");
-
-/* var formParamsName = $("form[name='paramsForm']"); */
-
-$("#btnSave").on("click", function(){
-	if (seq.val() == "0"){
-   		// 등록
-   		if (validationInst() == false) return false;
-   		form.attr("action", goUrlInst).submit();
-   	}else {
-   		// 수정
-   		/* keyName.val(atob(keyName.val())); */
-   		if (validationUpdt() == false) return false;
-   		form.attr("action", goUrlUpdt).submit();
-   	}
-}); 
-
-
-validationInst = function() {
-   	if(validationUpdt() == false) return false;
-}
-
-
-validationUpdt = function() {
-	<!-- if(!checkNull($.trim($("input[name=MENU_NAME]").val()), "MENU_NAME")) return false;  -->
-	/* if(!checkNull($('input[name=AUTH_NM]'), $.trim($('input[name=AUTH_NM]').val()), "권한명을 등록 해주세요!")) return false; */
-}
-
-
-$("#btnList").on("click", function(){
-	formVo.attr("action", goUrlList).submit();
-}); 
-
-
-$("#btnModalUelete, #btnModalDelete").on("click", function(){
-	$(".modal-title").text("확 인");
-	$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
-	$("#modalConfirm").modal("show");
-});
-
-
-$("#btnUelete").on("click", function(){
-	$("#modalConfirm").modal("hide");
- 	formVo.attr("action", goUrlUele).submit();
-});
+	}); 
+	
+	var goUrlList = "/member/memberList"; 			/* #-> */
+	var goUrlInst = "/member/memberInst"; 			/* #-> */
+	var goUrlUpdt = "/member/memberUpdt";			/* #-> */
+	var goUrlUele = "/member/memberUele";			/* #-> */
+	var goUrlDele = "/member/memberDele";			/* #-> */
+	
+	var seq = $("input:hidden[name=ifmmSeq]");		/* #-> */
+	
+	var form = $("form[name=form]");
+	var formVo = $("form[name=formVo]");
+	
+	
+	$("#btnSave").on("click", function(){
+		if (seq.val() == "0"){
+	   		// insert
+	   		if (validationInst() == false) return false;
+	   		form.attr("action", goUrlInst).submit();
+	   	} else {
+	   		// update
+	   		/* keyName.val(atob(keyName.val())); */
+	   		if (validationUpdt() == false) return false;
+	   		form.attr("action", goUrlUpdt).submit();
+	   	}
+	}); 
+	
+	
+	validationInst = function() {
+	   	if(validationUpdt() == false) return false;
+	}
+	
+	
+	validationUpdt = function() {
+		<!-- if(!checkNull($.trim($("input[name=MENU_NAME]").val()), "MENU_NAME")) return false;  -->
+		/* if(!checkNull($('input[name=AUTH_NM]'), $.trim($('input[name=AUTH_NM]').val()), "권한명을 등록 해주세요!")) return false; */
+	}
+	
+	
+	$("#btnList").on("click", function(){
+		formVo.attr("action", goUrlList).submit();
+	}); 
+	
+	
+	$("#btnModalUelete").on("click", function(){
+		$("input:hidden[name=exDeleteType]").val(1);
+		$(".modal-title").text("확 인");
+		$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+		$("#modalConfirm").modal("show");
+	});
+	
+	
+	$("#btnModalDelete").on("click", function(){
+		$("input:hidden[name=exDeleteType]").val(2);
+		$(".modal-title").text("확 인");
+		$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+		$("#modalConfirm").modal("show");
+	});
+	
+	
+	$("#btnUelete").on("click", function(){
+		$("#modalConfirm").modal("hide");
+		if ($("input:hidden[name=exDeleteType]").val() == 1) {
+			formVo.attr("action", goUrlUele).submit();
+		} else {
+			formVo.attr("action", goUrlDele).submit();
+		}
+	});
 
 </script>
 

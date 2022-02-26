@@ -68,6 +68,17 @@ public class MemberController extends BaseController{
 		return "redirect:/member/memberList";
 	}
 	
+	
+	@RequestMapping(value = "memberDele")
+	public String memberDele(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.delete(vo);
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/member/memberList";
+	}
+	
 //	@RequestMapping(value = "memberForm", method = RequestMethod.POST)
 //	public ModelAndView memberForm(@ModelAttribute MemberVo vo) throws Exception {
 //		ModelAndView mav = new ModelAndView();

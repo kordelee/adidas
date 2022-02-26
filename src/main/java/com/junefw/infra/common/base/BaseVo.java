@@ -25,8 +25,8 @@ public class BaseVo {
 //	search
 	private Integer shDelNy;
 	private Integer shDateOption;
-//	private Date shStartDate;
-//	private Date shEndDate;
+	private Date shStartDate;
+	private Date shEndDate;
 	private String shOption = "";
 	private String ShValue = "";
 //	----------
@@ -181,21 +181,21 @@ public void setParamsPaging(int totalRows) {
 		this.shDateOption = shDateOption;
 	}
 	
-//	public Date getShStartDate() {
-//		return shStartDate;
-//	}
-//	
-//	public void setShStartDate(Date shStartDate) {
-//		this.shStartDate = shStartDate;
-//	}
-//	
-//	public Date getShEndDate() {
-//		return shEndDate;
-//	}
-//	
-//	public void setShEndDate(Date shEndDate) {
-//		this.shEndDate = shEndDate;
-//	}
+	public Date getShStartDate() {
+		return shStartDate;
+	}
+	
+	public void setShStartDate(Date shStartDate) {
+		this.shStartDate = shStartDate;
+	}
+	
+	public Date getShEndDate() {
+		return shEndDate;
+	}
+	
+	public void setShEndDate(Date shEndDate) {
+		this.shEndDate = shEndDate;
+	}
 	
 	public String getShOption() {
 		return shOption;
@@ -212,5 +212,5 @@ public void setParamsPaging(int totalRows) {
 	public void setShValue(String shValue) {
 		ShValue = shValue;
 	}
-	
+
 }

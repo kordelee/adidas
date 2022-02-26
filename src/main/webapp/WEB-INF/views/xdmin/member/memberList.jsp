@@ -177,7 +177,6 @@
         </thead>
         <tbody>
         
-
 <c:choose>
 	<c:when test="${fn:length(list) eq 0}">
 		<tr>
@@ -250,6 +249,7 @@
 <!-- linkJs e -->
 	
 <script>
+
 	$(document).ready(function(){
 		divSearchControl();
 	}); 
