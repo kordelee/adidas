@@ -337,6 +337,7 @@
 	$("#btnSave").on("click", function(){
 		if (seq.val() == "0"){
 	   		// insert
+	   		alert($("input[name=ifmmId]").val());
 	   		if (validationInst() == false) return false;
 	   		form.attr("action", goUrlInst).submit();
 	   	} else {

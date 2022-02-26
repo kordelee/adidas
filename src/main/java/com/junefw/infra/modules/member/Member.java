@@ -9,8 +9,8 @@ public class Member extends Base {
 	private String ifmmSeq = "";
 	private Integer ifmmAdminNy = 0;
 	private Integer ifmmDormancyNy = 0;
-	private String ifmmName = "";
-	private String ifmmId = "";
+	private String ifmmName;
+	private String ifmmId;
 	private String ifmmPassword = "";
 	private Date ifmmPwdModDate ;
 	private String ifmmNickname = "";

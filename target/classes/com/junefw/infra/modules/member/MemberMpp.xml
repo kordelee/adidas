@@ -20,6 +20,7 @@
 			select
 				*
 		<include refid="selectCommon" />
+			order by a.ifmmSeq desc
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
@@ -31,8 +32,8 @@
 	<select id="selectOne" resultMap="resultMapObj">
 		select
 			a.ifmmSeq
-			, a.ifmmName
-			, a.ifmmId
+			,a.ifmmName
+			,a.ifmmId
 		from
 			infrMember a
 		where 1=1
@@ -40,23 +41,18 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO
-			TB_EP_AUTH (
-			  	AUTH_SEQ
-			    ,AUTH_NM
-			    ,CLNT_DISP
-			    ,AUTH_MEMO
-			    ,ORGEH
-			)
-		VALUES (
-		  	TB_EP_AUTH_SEQ.NEXTVAL
-		    ,#{AUTH_NM}
-		    ,#{CLNT_DISP}
-		    ,#{AUTH_MEMO}
-		    ,#{ORGEH}
-		 )
-		 <selectKey resultType="String" keyProperty="AUTH_SEQ" order="AFTER">
-		 	SELECT TB_EP_AUTH_SEQ.CURRVAL FROM DUAL
+		insert into infrMember (
+			ifmmName
+			,ifmmId
+			,ifmmDelNy			
+		)
+		values (
+			#{ifmmName}
+			,#{ifmmId}
+			,0
+		)
+		 <selectKey resultType="String" keyProperty="ifmmSeq" order="AFTER">
+			select last_insert_id()
 		 </selectKey>
 	</insert>
 

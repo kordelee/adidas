@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.junefw.infra.common.base.BaseController;
+import com.junefw.infra.common.constants.Constants;
 
 @Controller
 @RequestMapping(value="/member/")
@@ -47,6 +48,24 @@ public class MemberController extends BaseController{
 		return "xdmin/member/memberForm";
 	}
 	
+	@SuppressWarnings(value = {"all"})
+	@RequestMapping(value = "memberInst")
+	public String memberInst(MemberVo vo, Member member, RedirectAttributes redirectAttributes) throws Exception {
+	
+		service.insert(member);
+	
+		vo.setIfmmSeq(member.getIfmmSeq());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+	
+		if (Constants.INSERT_AFTER_TYPE == 1) {
+			return "redirect:/member/memberForm";
+		} else {
+			return "redirect:/member/memberList";
+		}
+	}
+	
+	@SuppressWarnings(value = {"all"})
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(MemberVo vo, Member member, RedirectAttributes redirectAttributes) throws Exception {
 		
@@ -54,7 +73,11 @@ public class MemberController extends BaseController{
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/member/memberForm";
+		if (Constants.UPDATE_AFTER_TYPE == 1) {
+			return "redirect:/member/memberForm";
+		} else {
+			return "redirect:/member/memberList";
+		}
 	}
 	
 	
